@@ -272,6 +272,32 @@ def trp_save_mets_to_file(doc_id, col_id, user, pw, file_path=".", base_url=base
     else:
         print(f"{file_path} does not exist")
         return None
-    # if mets_dict['doc_xml'] is not None:
-    #     with open('./filename', 'wb') as f:
-    #         f.write(etree.tostring(my_tree))
+
+
+def trp_collection_to_mets(col_id, user, pw, file_path=".", base_url=base_url):
+    """ Saves METS files of all Documents from a TRANSKRIBUS Collection
+        :param user: Your TRANSKRIBUS user name, e.g. my.mail@whatever.com
+        :param pw: Your TRANSKRIBUS password
+        :param base_url: The base URL of the TRANSKRIBUS API
+        :param col_id: The ID of a TRANSKRIBUS Collection
+        :param doc_id: The ID of TRANSKRIBUS Document
+        :return: The full filename
+    """
+    mpr_docs = trp_list_docs(col_id, user, pw)
+    col_dir = os.path.join(file_path, f"{col_id}")
+    try:
+        os.makedirs(col_dir)
+    except FileExistsError:
+        pass
+    doc_ids = [x['docId'] for x in mpr_docs]
+    print(f"{len(doc_ids)} to download")
+    counter = 1
+    for doc_id in doc_ids:
+        save_mets = trp_save_mets_to_file(
+            doc_id, col_id, user, pw, file_path=col_dir, base_url=base_url
+        )
+        print(f"saving: {save_mets}")
+        print(f"{counter}/{len(doc_ids)}")
+        counter += 1
+
+    return doc_ids
