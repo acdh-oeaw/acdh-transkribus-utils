@@ -55,10 +55,15 @@ setup(
     packages=[
         'transkribus_utils',
     ],
+    entry_points={
+        'console_scripts': [
+            'import-goobi-mets-to-transkribus=transkribus_utils.cli:import_goobi_mets_to_transkribus',]
+            },
     include_package_data=True,
     install_requires=[
         'requests',
         'lxml',
+        'click'
     ],
     license="MIT",
     zip_safe=False,
