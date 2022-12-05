@@ -3,7 +3,7 @@ import requests
 import lxml.etree as ET
 import re
 
-# base_url = "https://transkribus.eu/TrpServer/rest"
+base_url = "https://transkribus.eu/TrpServer/rest"
 nsmap = {"page": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2013-07-15"}
 crowd_base_url = (
     "https://transkribus.eu/r/read/sandbox/application/?colId={}&docId={}&pageId={}"
@@ -203,10 +203,11 @@ class ACDHTranskribusUtils:
             print(f"{file_path} does not exist")
             return None
 
-    def collection_to_mets(self, col_id, file_path="."):
+    def collection_to_mets(self, col_id, file_path=".", filter_by_doc_ids=[]):
         """Saves METS files of all Documents from a TRANSKRIBUS Collection
         :param col_id: The ID of a TRANSKRIBUS Collection
         :param doc_id: The ID of TRANSKRIBUS Document
+        :param filter_by_doc_ids: Only process documents with the passed in IDs
         :return: The full filename
         """
         mpr_docs = self.list_docs(col_id)
@@ -216,6 +217,9 @@ class ACDHTranskribusUtils:
         except FileExistsError:
             pass
         doc_ids = [x["docId"] for x in mpr_docs]
+        if filter_by_doc_ids:
+            filter_as_int = [int(x) for x in filter_by_doc_ids]
+            doc_ids = [x for x in doc_ids if int(x) in filter_as_int]
         print(f"{len(doc_ids)} to download")
         counter = 1
         for doc_id in doc_ids:
@@ -319,7 +323,7 @@ class ACDHTranskribusUtils:
                     )
 
     def __init__(
-        self, user=None, password=None, transkribus_base_url=None, goobi_base_url=None
+        self, user=None, password=None, transkribus_base_url=base_url, goobi_base_url=None
     ) -> None:
         if user is None:
             user = os.environ.get("TRANSKRIBUS_USER", None)
