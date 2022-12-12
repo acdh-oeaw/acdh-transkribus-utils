@@ -224,7 +224,6 @@ class ACDHTranskribusUtils:
         :return: The full filename
         """
         file_list = self.get_image_names(doc_id, col_id)
-        print(file_list)
         file_name = os.path.join(file_path, f"{doc_id}_image_name.xml")
         root = ET.Element("list")
         counter = 1
