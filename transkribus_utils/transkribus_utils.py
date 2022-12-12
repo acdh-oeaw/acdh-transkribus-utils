@@ -203,6 +203,45 @@ class ACDHTranskribusUtils:
             print(f"{file_path} does not exist")
             return None
 
+    def get_image_names(self, doc_id, col_id):
+        """Get images names for Document
+        :param col_id: The ID of a TRANSKRIBUS Collection
+        :param doc_id: The ID of TRANSKRIBUS Document
+        :return: a list of images names
+        """
+        url = f"{self.base_url}/collections/{col_id}/{doc_id}/imageNames"
+        response = requests.get(url, cookies=self.login_cookie)
+        if response.ok:
+            result = response.text.split("\n")
+        else:
+            result = []
+        return result
+
+    def save_image_names_to_file(self, doc_id, col_id, file_path="."):
+        """Saves the METS file of a Document
+        :param col_id: The ID of a TRANSKRIBUS Collection
+        :param doc_id: The ID of TRANSKRIBUS Document
+        :return: The full filename
+        """
+        file_list = self.get_image_names(doc_id, col_id)
+        print(file_list)
+        file_name = os.path.join(file_path, f"{doc_id}_image_name.xml")
+        root = ET.Element("list")
+        counter = 1
+        for x in file_list:
+            item = ET.Element("item")
+            item.attrib["n"] = f"{counter}"
+            item.text = x
+            root.append(item)
+            counter += 1
+        if os.path.isdir(file_path):
+            with open(file_name, "wb") as f:
+                f.write(ET.tostring(root))
+            return file_name
+        else:
+            print(f"{file_path} does not exist")
+            return None
+
     def collection_to_mets(self, col_id, file_path=".", filter_by_doc_ids=[]):
         """Saves METS files of all Documents from a TRANSKRIBUS Collection
         :param col_id: The ID of a TRANSKRIBUS Collection
@@ -224,7 +263,9 @@ class ACDHTranskribusUtils:
         counter = 1
         for doc_id in doc_ids:
             save_mets = self.save_mets_to_file(doc_id, col_id, file_path=col_dir)
+            file_list = self.save_image_names_to_file(doc_id, col_id, file_path=col_dir)
             print(f"saving: {save_mets}")
+            print(f"saving: {file_list}")
             print(f"{counter}/{len(doc_ids)}")
             counter += 1
 
@@ -323,7 +364,11 @@ class ACDHTranskribusUtils:
                     )
 
     def __init__(
-        self, user=None, password=None, transkribus_base_url=base_url, goobi_base_url=None
+        self,
+        user=None,
+        password=None,
+        transkribus_base_url=base_url,
+        goobi_base_url=None,
     ) -> None:
         if user is None:
             user = os.environ.get("TRANSKRIBUS_USER", None)
