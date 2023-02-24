@@ -18,16 +18,25 @@ class ACDHTranskribusUtils:
         :param base_url: The base URL of the TRANSKRIBUS API
         :return: The Session ID in case of a successful log in attempt
         """
+        request_url = f"{self.base_url}/auth/login"
         res = requests.post(
-            f"{self.base_url}/auth/login", data={"user": user, "pw": pw}
+            request_url,
+            data={"user": user, "pw": pw}
         )
         if res.status_code == 200:
             tree = ET.fromstring(res.content)
             sessionid = tree.xpath("/trpUserLogin/sessionId/text()")
             cookies = dict(JSESSIONID=sessionid[0])
             return cookies
+        elif res.status_code == 403:
+            raise Exception(
+                f'Unable to authenticate to the Trancribus-server ({request_url}) with the provided credentials.'\
+                '\nCheck if you provided the correct username & password.'\
+                '\nPasswords/usernames containing special characters, spaces etc. may cause this behaviour. '\
+                'So you might need to change your password.'
+            )
         else:
-            return False
+            raise Exception(f"Login at Transcribus-server ({request_url}) failed with unexspected http-status code '{res.status_code}'.")
 
     def ft_search(self, **kwargs):
         """ Helper function to interact with TRANSKRIBUS fulltext search endpoint
