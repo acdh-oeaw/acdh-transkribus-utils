@@ -1,7 +1,5 @@
 import unittest
 
-from transkribus_utils import ACDHTranskribusUtils
-
 
 class TestTestTest(unittest.TestCase):
     """Tests for `acdh_cidoc_pyutils` package."""
