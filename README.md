@@ -20,7 +20,7 @@ Set Transkribus-Credentials as environment variables:
 export TRANSKRIBUS_USER=some@mail.com
 export TRANSKRIBUS_PASSWORD=verysecret
 ```
-
+(or create a file called `env.secret` similar to `env.dummy` and run  `source export_env_variables.sh`)
 you can pass in your credentials also as params e.g. 
 
 ```python
