@@ -10,7 +10,7 @@ setup(
     description="""some utility function to interact with the Transkribus-API""",
     long_description=readme,
     long_description_content_type="text/markdown",
-    author="Peter Andorfer",
+    author="Peter Andorfer, Matthias Schlögl, Carl Friedrich Haak",
     author_email="peter.andorfer@oeaw.ac.at",
     url="https://github.com/acdh-oeaw/acdh-transkribus-utils",
     packages=[
