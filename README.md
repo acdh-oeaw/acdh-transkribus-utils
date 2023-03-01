@@ -1,6 +1,9 @@
 # acdh-transkribus-utils
 
 [![PyPI version](https://badge.fury.io/py/acdh-transkribus-utils.svg)](https://badge.fury.io/py/acdh-transkribus-utils)
+[![flake8 Lint](https://github.com/acdh-oeaw/acdh-transkribus-utils/actions/workflows/lint.yml/badge.svg)](https://github.com/acdh-oeaw/acdh-transkribus-utils/actions/workflows/lint.yml)
+[![Test](https://github.com/acdh-oeaw/acdh-transkribus-utils/actions/workflows/test.yml/badge.svg)](https://github.com/acdh-oeaw/acdh-transkribus-utils/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/acdh-oeaw/acdh-transkribus-utils/branch/master/graph/badge.svg?token=QOY62C0X5Y)](https://codecov.io/gh/acdh-oeaw/acdh-transkribus-utils)
 
 A python package providing some utility functions for interacting with the [Transkribus-API](https://transkribus.eu/wiki/index.php/REST_Interface)
 
