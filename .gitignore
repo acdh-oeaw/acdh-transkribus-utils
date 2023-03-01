@@ -24,3 +24,4 @@ myenv
 *.xml
 secret.sh
 env.secret
+.coverage
