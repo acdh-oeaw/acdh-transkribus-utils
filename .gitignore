@@ -23,3 +23,5 @@ myenv
 *.ipynb
 *.xml
 secret.sh
+env.secret
+.coverage

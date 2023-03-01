@@ -1,0 +1,31 @@
+
+name: Test
+on:
+  push:
+
+jobs:
+  test:
+    name: Test Application
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: Install dependencies
+      run: |
+        pip install --upgrade --upgrade-strategy eager -r requirements_dev.txt
+    - name: Install actual package
+      run: |
+        pip install -e .
+    - name: Run tests
+      run: coverage run -m pytest -v
+    - name: Create Coverage Report
+      run: coverage xml
+    - name: "Upload coverage to Codecov"
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        fail_ci_if_error: false
+        verbose: true
