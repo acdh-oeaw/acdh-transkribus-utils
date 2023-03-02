@@ -3,6 +3,8 @@ import requests
 import lxml.etree as ET
 import re
 
+from .mets import get_title_from_mets
+
 base_url = "https://transkribus.eu/TrpServer/rest"
 nsmap = {"page": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2013-07-15"}
 crowd_base_url = (
@@ -334,15 +336,21 @@ class ACDHTranskribusUtils:
         :param mets_url: URL of the METS file
         :param col_id: Transkribus CollectionID
         """
-        res = requests.post(
-            f"{self.base_url}/collections/{col_id}/createDocFromMetsUrl",
-            cookies=self.login_cookie,
-            params={"fileName": mets_url},
-        )
-        if res.status_code == 200:
-            return True
+        doc_title = get_title_from_mets(mets_url)
+        doc_exists = self.search_for_document(title=doc_title, col_id=col_id)
+        if len(doc_exists) == 0:
+            res = requests.post(
+                f"{self.base_url}/collections/{col_id}/createDocFromMetsUrl",
+                cookies=self.login_cookie,
+                params={"fileName": mets_url},
+            )
+            if res.status_code == 200:
+                return True
+            else:
+                print("Error: ", res.status_code, res.content)
+                return False
         else:
-            print("Error: ", res.status_code, res.content)
+            print(f"a document with title: {doc_title} already exists in collection {col_id}")
             return False
 
     def upload_mets_files_from_goobi(
