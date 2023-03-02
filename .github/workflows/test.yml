@@ -7,6 +7,9 @@ jobs:
   test:
     name: Test Application
     runs-on: ubuntu-latest
+    env:
+      TRANSKRIBUS_USER: ${{secrets.TRANSKRIBUS_USER}}
+      TRANSKRIBUS_PASSWORD: ${{secrets.TRANSKRIBUS_PASSWORD}}
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
