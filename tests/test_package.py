@@ -1,10 +1,13 @@
 import unittest
 
 from transkribus_utils import ACDHTranskribusUtils
+from transkribus_utils.mets import get_title_from_mets
 
 CLIENT = ACDHTranskribusUtils()
-COL_NAME = "bv-play"
-COL_ID = 188933
+COL_NAME = "acdh-transkribus-utils"
+COL_ID = 190357
+METS_URL = "https://viewer.acdh.oeaw.ac.at/viewer/sourcefile?id=AC16292422"
+DOC_NAME = "Hesketh Crescent"
 
 
 class TestTestTest(unittest.TestCase):
@@ -27,3 +30,17 @@ class TestTestTest(unittest.TestCase):
         client = CLIENT
         col = client.get_or_create_collection(COL_NAME)
         self.assertEqual(col, COL_ID)
+
+    def test_004_title_from_mets(self):
+        title = get_title_from_mets(METS_URL)
+        self.assertEqual(title, DOC_NAME)
+
+    def test_005_doc_from_mets(self):
+        client = CLIENT
+        upload_status = client.upload_mets_file_from_url(METS_URL, COL_ID)
+        self.assertFalse(upload_status)
+
+    def test_006_search_document(self):
+        client = CLIENT
+        result = client.search_for_document(title=DOC_NAME, col_id=COL_ID)
+        self.assertTrue(len(result) > 0)

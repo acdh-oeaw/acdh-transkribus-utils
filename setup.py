@@ -22,7 +22,7 @@ setup(
         ]
     },
     include_package_data=True,
-    install_requires=["requests", "lxml", "click"],
+    install_requires=["acdh-xml-pyutils", "click"],
     license="MIT",
     zip_safe=False,
     keywords="acdh-transkribus-utils",
