@@ -1,9 +1,10 @@
+import io
 import os
 import requests
 import lxml.etree as ET
 import re
 
-from .mets import get_title_from_mets
+from .mets import get_title_from_mets, replace_img_urls_in_mets
 
 base_url = "https://transkribus.eu/TrpServer/rest"
 nsmap = {"page": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2013-07-15"}
@@ -331,7 +332,7 @@ class ACDHTranskribusUtils:
             print(col)
             return col[0]["colId"]
 
-    def upload_mets_file_from_url(self, mets_url, col_id):
+    def upload_mets_file_from_url(self, mets_url, col_id, better_images=False):
         """Takes an URL to a METS file and posts that URL to Transkribus
         :param mets_url: URL of the METS file
         :param col_id: Transkribus CollectionID
@@ -339,16 +340,38 @@ class ACDHTranskribusUtils:
         doc_title = get_title_from_mets(mets_url)
         doc_exists = self.search_for_document(title=doc_title, col_id=col_id)
         if len(doc_exists) == 0:
-            res = requests.post(
-                f"{self.base_url}/collections/{col_id}/createDocFromMetsUrl",
-                cookies=self.login_cookie,
-                params={"fileName": mets_url},
-            )
-            if res.status_code == 200:
-                return True
+            if better_images:
+                new_mets_str = replace_img_urls_in_mets(mets_url)
+                new_mets_file = io.BytesIO(new_mets_str.encode('utf-8'))
+                files = [
+                    (
+                        'mets', (
+                            "mets.xml", new_mets_file, "text/xml"
+                        )
+                    )
+                ]
+                url = f"{self.base_url}/collections/{col_id}/createDocFromMets?colId={col_id}"
+                res = requests.post(
+                    url,
+                    cookies=self.login_cookie,
+                    files=files
+                )
+                if res.status_code == 200:
+                    return True
+                else:
+                    print("Error: ", res.status_code, res.content)
+                    return False
             else:
-                print("Error: ", res.status_code, res.content)
-                return False
+                res = requests.post(
+                    f"{self.base_url}/collections/{col_id}/createDocFromMetsUrl",
+                    cookies=self.login_cookie,
+                    params={"fileName": mets_url},
+                )
+                if res.status_code == 200:
+                    return True
+                else:
+                    print("Error: ", res.status_code, res.content)
+                    return False
         else:
             print(f"a document with title: {doc_title} already exists in collection {col_id}")
             return False

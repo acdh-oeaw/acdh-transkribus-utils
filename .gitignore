@@ -25,3 +25,4 @@ myenv
 secret.sh
 env.secret
 .coverage
+!/tests/sample*xml
