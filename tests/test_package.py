@@ -1,14 +1,17 @@
+import os
 import unittest
+from pathlib import Path
 
 from transkribus_utils import ACDHTranskribusUtils
 from transkribus_utils.mets import get_title_from_mets, replace_img_urls_in_mets
 
+file_path = Path(__file__).absolute().parent
 CLIENT = ACDHTranskribusUtils()
 COL_NAME = "acdh-transkribus-utils"
 COL_ID = 190357
 METS_URL = "https://viewer.acdh.oeaw.ac.at/viewer/sourcefile?id=AC16292422"
 DOC_NAME = "Hesketh Crescent"
-SAMPLE_METS = './tests/sample_mets.xml'
+SAMPLE_METS = os.path.join(file_path, 'sample_mets.xml')
 
 
 class TestTestTest(unittest.TestCase):
