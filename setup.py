@@ -6,7 +6,7 @@ with open("README.md") as readme_file:
 
 setup(
     name="acdh-transkribus-utils",
-    version="2.3",
+    version="2.4",
     description="""some utility function to interact with the Transkribus-API""",
     long_description=readme,
     long_description_content_type="text/markdown",
