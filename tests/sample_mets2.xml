@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mets:mets OBJID="13741" xsi:schemaLocation="http://www.loc.gov/standards/premis/ http://www.loc.gov/standards/premis/v2/premis-v2-0.xsd http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-7.xsd http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/mets.xsd http://www.loc.gov/standards/mix/ http://www.loc.gov/standards/mix/mix.xsd" xmlns:mets="http://www.loc.gov/METS/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:dv="http://dfg-viewer.de/" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <mets:metsHdr CREATEDATE="2023-02-28T14:01:55Z">
+      <mets:agent OTHERTYPE="SOFTWARE" ROLE="CREATOR" TYPE="OTHER">
+         <mets:name>Goobi - 9e644 - 2022-05-14 17:31:00+0000</mets:name>
+         <mets:note>Goobi</mets:note>
+      </mets:agent>
+   </mets:metsHdr>
+   <mets:dmdSec ID="DMDLOG_0000">
+      <mets:mdWrap MDTYPE="MODS">
+         <mets:xmlData>
+            <mods:mods>
+               <mods:titleInfo>
+                  <mods:title>Kelsen Entwurf II</mods:title>
+               </mods:titleInfo>
+               <mods:titleInfo type="uniform">
+                  <mods:title>kelsen-entwurf-2</mods:title>
+               </mods:titleInfo>
+               <mods:recordInfo>
+                  <mods:recordIdentifier source="obv-ac">kelsen-entwurf-2</mods:recordIdentifier>
+               </mods:recordInfo>
+               <mods:classification authority="ivdcc">DefaultCollection</mods:classification>
+               <mods:originInfo>
+                  <mods:dateIssued encoding="iso8601" keyDate="yes">1921</mods:dateIssued>
+               </mods:originInfo>
+               <mods:location>
+                  <mods:physicalLocation>Österreichische Akademie der Wissenschaften Wien</mods:physicalLocation>
+               </mods:location>
+               <mods:originInfo>
+                  <mods:place>
+                     <mods:placeTerm type="text">Wien</mods:placeTerm>
+                  </mods:place>
+                  <mods:dateCaptured encoding="iso8601">2023</mods:dateCaptured>
+                  <mods:publisher>Österreichische Akademie der Wissenschaften Wien</mods:publisher>
+                  <mods:edition>[Electronic ed.]</mods:edition>
+               </mods:originInfo>
+               <mods:physicalDescription>
+                  <mods:digitalOrigin>reformatted digital</mods:digitalOrigin>
+               </mods:physicalDescription>
+            </mods:mods>
+         </mets:xmlData>
+      </mets:mdWrap>
+   </mets:dmdSec>
+   <mets:dmdSec ID="DMDLOG_0001">
+      <mets:mdWrap MDTYPE="MODS">
+         <mets:xmlData>
+            <mods:mods>
+               <mods:titleInfo>
+                  <mods:title>Erster Abschnitt. Allgemeine Bestimmungen.</mods:title>
+               </mods:titleInfo>
+            </mods:mods>
+         </mets:xmlData>
+      </mets:mdWrap>
+   </mets:dmdSec>
+   <mets:dmdSec ID="DMDLOG_0002">
+      <mets:mdWrap MDTYPE="MODS">
+         <mets:xmlData>
+            <mods:mods>
+               <mods:titleInfo>
+                  <mods:title>Art. 3</mods:title>
+               </mods:titleInfo>
+            </mods:mods>
+         </mets:xmlData>
+      </mets:mdWrap>
+   </mets:dmdSec>
+   <mets:dmdSec ID="DMDLOG_0003">
+      <mets:mdWrap MDTYPE="MODS">
+         <mets:xmlData>
+            <mods:mods>
+               <mods:titleInfo>
+                  <mods:title>Art. 2</mods:title>
+               </mods:titleInfo>
+            </mods:mods>
+         </mets:xmlData>
+      </mets:mdWrap>
+   </mets:dmdSec>
+   <mets:dmdSec ID="DMDLOG_0004">
+      <mets:mdWrap MDTYPE="MODS">
+         <mets:xmlData>
+            <mods:mods>
+               <mods:titleInfo>
+                  <mods:title>Art. 1</mods:title>
+               </mods:titleInfo>
+            </mods:mods>
+         </mets:xmlData>
+      </mets:mdWrap>
+   </mets:dmdSec>
+   <mets:dmdSec ID="DMDLOG_0005">
+      <mets:mdWrap MDTYPE="MODS">
+         <mets:xmlData>
+            <mods:mods>
+               <mods:titleInfo>
+                  <mods:title>Zweiter Abschnitt. Von der Gesetzgebung des Bundes.</mods:title>
+               </mods:titleInfo>
+            </mods:mods>
+         </mets:xmlData>
+      </mets:mdWrap>
+   </mets:dmdSec>
+   <mets:amdSec ID="AMD">
+      <mets:rightsMD ID="RIGHTS">
+         <mets:mdWrap MDTYPE="OTHER" MIMETYPE="text/xml" OTHERMDTYPE="DVRIGHTS">
+            <mets:xmlData>
+               <dv:rights>
+                  <dv:owner>Österreichische Akademie der Wissenschaften</dv:owner>
+                  <dv:ownerLogo>https://viewer.acdh.oeaw.ac.at/viewer/resources/themes/oeadw/images/template/oeaw-logo.png</dv:ownerLogo>
+                  <dv:ownerSiteURL>https://www.oeaw.ac.at/</dv:ownerSiteURL>
+                  <dv:ownerContact>mailto:webmaster@oeaw.ac.at</dv:ownerContact>
+               </dv:rights>
+            </mets:xmlData>
+         </mets:mdWrap>
+      </mets:rightsMD>
+      <mets:digiprovMD ID="DIGIPROV">
+         <mets:mdWrap MDTYPE="OTHER" MIMETYPE="text/xml" OTHERMDTYPE="DVLINKS">
+            <mets:xmlData>
+               <dv:links>
+                  <dv:reference>http://aleph22-prod-uni.obvsg.at/F/UD1P55XHHQIPTAJIMYYTL54T2NG5XNT4XYUNIPSFI24L557YUU-06609?func=find-b&amp;request=kelsen-entwurf-2</dv:reference>
+                  <dv:presentation>https://viewer.acdh.oeaw.ac.at/viewer/ppnresolver?id=kelsen-entwurf-2</dv:presentation>
+               </dv:links>
+            </mets:xmlData>
+         </mets:mdWrap>
+      </mets:digiprovMD>
+   </mets:amdSec>
+   <mets:fileSec>
+      <mets:fileGrp USE="PRESENTATION">
+         <mets:file ID="FILE_0001_PRESENTATION" MIMETYPE="image/tiff">
+            <mets:FLocat LOCTYPE="URL" xlink:href="file:///opt/digiverso/viewer/media/kelsen-entwurf-2/kelsen_2__001.tif"/>
+         </mets:file>
+         <mets:file ID="FILE_0002_PRESENTATION" MIMETYPE="image/tiff">
+            <mets:FLocat LOCTYPE="URL" xlink:href="file:///opt/digiverso/viewer/media/kelsen-entwurf-2/kelsen_2__002.tif"/>
+         </mets:file>
+         <mets:file ID="FILE_0003_PRESENTATION" MIMETYPE="image/tiff">
+            <mets:FLocat LOCTYPE="URL" xlink:href="file:///opt/digiverso/viewer/media/kelsen-entwurf-2/kelsen_2__003.tif"/>
+         </mets:file>
+         <mets:file ID="FILE_0004_PRESENTATION" MIMETYPE="image/tiff">
+            <mets:FLocat LOCTYPE="URL" xlink:href="file:///opt/digiverso/viewer/media/kelsen-entwurf-2/kelsen_2__004.tif"/>
+         </mets:file>
+         <mets:file ID="FILE_0005_PRESENTATION" MIMETYPE="image/tiff">
+            <mets:FLocat LOCTYPE="URL" xlink:href="file:///opt/digiverso/viewer/media/kelsen-entwurf-2/kelsen_2__005.tif"/>
+         </mets:file>
+         <mets:file ID="FILE_0006_PRESENTATION" MIMETYPE="image/tiff">
+            <mets:FLocat LOCTYPE="URL" xlink:href="file:///opt/digiverso/viewer/media/kelsen-entwurf-2/kelsen_2__006.tif"/>
+         </mets:file>
+         <mets:file ID="FILE_0007_PRESENTATION" MIMETYPE="image/tiff">
+            <mets:FLocat LOCTYPE="URL" xlink:href="file:///opt/digiverso/viewer/media/kelsen-entwurf-2/kelsen_2__007.tif"/>
+         </mets:file>
+         <mets:file ID="FILE_0008_PRESENTATION" MIMETYPE="image/tiff">
+            <mets:FLocat LOCTYPE="URL" xlink:href="file:///opt/digiverso/viewer/media/kelsen-entwurf-2/kelsen_2__008.tif"/>
+         </mets:file>
+         <mets:file ID="FILE_0009_PRESENTATION" MIMETYPE="image/tiff">
+            <mets:FLocat LOCTYPE="URL" xlink:href="file:///opt/digiverso/viewer/media/kelsen-entwurf-2/kelsen_2__009.tif"/>
+         </mets:file>
+         <mets:file ID="FILE_0010_PRESENTATION" MIMETYPE="image/tiff">
+            <mets:FLocat LOCTYPE="URL" xlink:href="file:///opt/digiverso/viewer/media/kelsen-entwurf-2/kelsen_2__010.tif"/>
+         </mets:file>
+      </mets:fileGrp>
+      <mets:fileGrp USE="DEFAULT">
+         <mets:file ID="FILE_0001_DEFAULT" MIMETYPE="image/jpeg">
+            <mets:FLocat LOCTYPE="URL" xlink:href="https://viewer.acdh.oeaw.ac.at/viewer/content/kelsen-entwurf-2/800/0/kelsen_2__001.jpg"/>
+         </mets:file>
+         <mets:file ID="FILE_0002_DEFAULT" MIMETYPE="image/jpeg">
+            <mets:FLocat LOCTYPE="URL" xlink:href="https://viewer.acdh.oeaw.ac.at/viewer/content/kelsen-entwurf-2/800/0/kelsen_2__002.jpg"/>
+         </mets:file>
+         <mets:file ID="FILE_0003_DEFAULT" MIMETYPE="image/jpeg">
+            <mets:FLocat LOCTYPE="URL" xlink:href="https://viewer.acdh.oeaw.ac.at/viewer/content/kelsen-entwurf-2/800/0/kelsen_2__003.jpg"/>
+         </mets:file>
+         <mets:file ID="FILE_0004_DEFAULT" MIMETYPE="image/jpeg">
+            <mets:FLocat LOCTYPE="URL" xlink:href="https://viewer.acdh.oeaw.ac.at/viewer/content/kelsen-entwurf-2/800/0/kelsen_2__004.jpg"/>
+         </mets:file>
+         <mets:file ID="FILE_0005_DEFAULT" MIMETYPE="image/jpeg">
+            <mets:FLocat LOCTYPE="URL" xlink:href="https://viewer.acdh.oeaw.ac.at/viewer/content/kelsen-entwurf-2/800/0/kelsen_2__005.jpg"/>
+         </mets:file>
+         <mets:file ID="FILE_0006_DEFAULT" MIMETYPE="image/jpeg">
+            <mets:FLocat LOCTYPE="URL" xlink:href="https://viewer.acdh.oeaw.ac.at/viewer/content/kelsen-entwurf-2/800/0/kelsen_2__006.jpg"/>
+         </mets:file>
+         <mets:file ID="FILE_0007_DEFAULT" MIMETYPE="image/jpeg">
+            <mets:FLocat LOCTYPE="URL" xlink:href="https://viewer.acdh.oeaw.ac.at/viewer/content/kelsen-entwurf-2/800/0/kelsen_2__007.jpg"/>
+         </mets:file>
+         <mets:file ID="FILE_0008_DEFAULT" MIMETYPE="image/jpeg">
+            <mets:FLocat LOCTYPE="URL" xlink:href="https://viewer.acdh.oeaw.ac.at/viewer/content/kelsen-entwurf-2/800/0/kelsen_2__008.jpg"/>
+         </mets:file>
+         <mets:file ID="FILE_0009_DEFAULT" MIMETYPE="image/jpeg">
+            <mets:FLocat LOCTYPE="URL" xlink:href="https://viewer.acdh.oeaw.ac.at/viewer/content/kelsen-entwurf-2/800/0/kelsen_2__009.jpg"/>
+         </mets:file>
+         <mets:file ID="FILE_0010_DEFAULT" MIMETYPE="image/jpeg">
+            <mets:FLocat LOCTYPE="URL" xlink:href="https://viewer.acdh.oeaw.ac.at/viewer/content/kelsen-entwurf-2/800/0/kelsen_2__010.jpg"/>
+         </mets:file>
+      </mets:fileGrp>
+   </mets:fileSec>
+   <mets:structMap TYPE="LOGICAL">
+      <mets:div ADMID="AMD" DMDID="DMDLOG_0000" ID="LOG_0000" LABEL="Kelsen Entwurf II" TYPE="monograph">
+         <mets:div ID="LOG_0001" TYPE="title_page"/>
+         <mets:div DMDID="DMDLOG_0001" ID="LOG_0002" LABEL="Erster Abschnitt. Allgemeine Bestimmungen." TYPE="chapter">
+            <mets:div DMDID="DMDLOG_0002" ID="LOG_0003" LABEL="Art. 3" TYPE="chapter"/>
+            <mets:div DMDID="DMDLOG_0003" ID="LOG_0004" LABEL="Art. 2" TYPE="chapter"/>
+            <mets:div DMDID="DMDLOG_0004" ID="LOG_0005" LABEL="Art. 1" TYPE="chapter"/>
+         </mets:div>
+         <mets:div DMDID="DMDLOG_0005" ID="LOG_0006" LABEL="Zweiter Abschnitt. Von der Gesetzgebung des Bundes." TYPE="chapter"/>
+      </mets:div>
+   </mets:structMap>
+   <mets:structMap TYPE="PHYSICAL">
+      <mets:div ID="PHYS_0000" TYPE="physSequence">
+         <mets:div ID="PHYS_0001" ORDER="1" ORDERLABEL="[1]" TYPE="page">
+            <mets:fptr FILEID="FILE_0001_PRESENTATION"/>
+            <mets:fptr FILEID="FILE_0001_DEFAULT"/>
+         </mets:div>
+         <mets:div ID="PHYS_0002" ORDER="2" ORDERLABEL="[2]" TYPE="page">
+            <mets:fptr FILEID="FILE_0002_PRESENTATION"/>
+            <mets:fptr FILEID="FILE_0002_DEFAULT"/>
+         </mets:div>
+         <mets:div ID="PHYS_0003" ORDER="3" ORDERLABEL="[3]" TYPE="page">
+            <mets:fptr FILEID="FILE_0003_PRESENTATION"/>
+            <mets:fptr FILEID="FILE_0003_DEFAULT"/>
+         </mets:div>
+         <mets:div ID="PHYS_0004" ORDER="4" ORDERLABEL="[4]" TYPE="page">
+            <mets:fptr FILEID="FILE_0004_PRESENTATION"/>
+            <mets:fptr FILEID="FILE_0004_DEFAULT"/>
+         </mets:div>
+         <mets:div ID="PHYS_0005" ORDER="5" ORDERLABEL="[5]" TYPE="page">
+            <mets:fptr FILEID="FILE_0005_PRESENTATION"/>
+            <mets:fptr FILEID="FILE_0005_DEFAULT"/>
+         </mets:div>
+         <mets:div ID="PHYS_0006" ORDER="6" ORDERLABEL="[6]" TYPE="page">
+            <mets:fptr FILEID="FILE_0006_PRESENTATION"/>
+            <mets:fptr FILEID="FILE_0006_DEFAULT"/>
+         </mets:div>
+         <mets:div ID="PHYS_0007" ORDER="7" ORDERLABEL="[7]" TYPE="page">
+            <mets:fptr FILEID="FILE_0007_PRESENTATION"/>
+            <mets:fptr FILEID="FILE_0007_DEFAULT"/>
+         </mets:div>
+         <mets:div ID="PHYS_0008" ORDER="8" ORDERLABEL="[8]" TYPE="page">
+            <mets:fptr FILEID="FILE_0008_PRESENTATION"/>
+            <mets:fptr FILEID="FILE_0008_DEFAULT"/>
+         </mets:div>
+         <mets:div ID="PHYS_0009" ORDER="9" ORDERLABEL="[9]" TYPE="page">
+            <mets:fptr FILEID="FILE_0009_PRESENTATION"/>
+            <mets:fptr FILEID="FILE_0009_DEFAULT"/>
+         </mets:div>
+         <mets:div ID="PHYS_0010" ORDER="10" ORDERLABEL="[10]" TYPE="page">
+            <mets:fptr FILEID="FILE_0010_PRESENTATION"/>
+            <mets:fptr FILEID="FILE_0010_DEFAULT"/>
+         </mets:div>
+      </mets:div>
+   </mets:structMap>
+   <mets:structLink>
+      <mets:smLink xlink:to="PHYS_0001" xlink:from="LOG_0000"/>
+      <mets:smLink xlink:to="PHYS_0002" xlink:from="LOG_0000"/>
+      <mets:smLink xlink:to="PHYS_0003" xlink:from="LOG_0000"/>
+      <mets:smLink xlink:to="PHYS_0004" xlink:from="LOG_0000"/>
+      <mets:smLink xlink:to="PHYS_0005" xlink:from="LOG_0000"/>
+      <mets:smLink xlink:to="PHYS_0006" xlink:from="LOG_0000"/>
+      <mets:smLink xlink:to="PHYS_0007" xlink:from="LOG_0000"/>
+      <mets:smLink xlink:to="PHYS_0008" xlink:from="LOG_0000"/>
+      <mets:smLink xlink:to="PHYS_0009" xlink:from="LOG_0000"/>
+      <mets:smLink xlink:to="PHYS_0010" xlink:from="LOG_0000"/>
+      <mets:smLink xlink:to="PHYS_0001" xlink:from="LOG_0001"/>
+      <mets:smLink xlink:to="PHYS_0002" xlink:from="LOG_0002"/>
+      <mets:smLink xlink:to="PHYS_0003" xlink:from="LOG_0002"/>
+      <mets:smLink xlink:to="PHYS_0004" xlink:from="LOG_0002"/>
+      <mets:smLink xlink:to="PHYS_0002" xlink:from="LOG_0003"/>
+      <mets:smLink xlink:to="PHYS_0002" xlink:from="LOG_0004"/>
+      <mets:smLink xlink:to="PHYS_0002" xlink:from="LOG_0005"/>
+      <mets:smLink xlink:to="PHYS_0004" xlink:from="LOG_0006"/>
+      <mets:smLink xlink:to="PHYS_0005" xlink:from="LOG_0006"/>
+      <mets:smLink xlink:to="PHYS_0006" xlink:from="LOG_0006"/>
+      <mets:smLink xlink:to="PHYS_0007" xlink:from="LOG_0006"/>
+   </mets:structLink>
+</mets:mets>
