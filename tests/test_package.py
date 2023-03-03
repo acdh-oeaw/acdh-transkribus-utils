@@ -1,13 +1,14 @@
 import unittest
 
 from transkribus_utils import ACDHTranskribusUtils
-from transkribus_utils.mets import get_title_from_mets
+from transkribus_utils.mets import get_title_from_mets, replace_img_urls_in_mets
 
 CLIENT = ACDHTranskribusUtils()
 COL_NAME = "acdh-transkribus-utils"
 COL_ID = 190357
 METS_URL = "https://viewer.acdh.oeaw.ac.at/viewer/sourcefile?id=AC16292422"
 DOC_NAME = "Hesketh Crescent"
+SAMPLE_METS = './tests/sample_mets.xml'
 
 
 class TestTestTest(unittest.TestCase):
@@ -44,3 +45,7 @@ class TestTestTest(unittest.TestCase):
         client = CLIENT
         result = client.search_for_document(title=DOC_NAME, col_id=COL_ID)
         self.assertTrue(len(result) > 0)
+
+    def test_007_fix_mets(self):
+        new_mets = replace_img_urls_in_mets(SAMPLE_METS)
+        self.assertFalse('/800/0/' in new_mets)
