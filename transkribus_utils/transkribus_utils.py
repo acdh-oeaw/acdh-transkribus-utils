@@ -342,20 +342,10 @@ class ACDHTranskribusUtils:
         if len(doc_exists) == 0:
             if better_images:
                 new_mets_str = replace_img_urls_in_mets(mets_url)
-                new_mets_file = io.BytesIO(new_mets_str.encode('utf-8'))
-                files = [
-                    (
-                        'mets', (
-                            "mets.xml", new_mets_file, "text/xml"
-                        )
-                    )
-                ]
+                new_mets_file = io.BytesIO(new_mets_str.encode("utf-8"))
+                files = [("mets", ("mets.xml", new_mets_file, "text/xml"))]
                 url = f"{self.base_url}/collections/{col_id}/createDocFromMets?colId={col_id}"
-                res = requests.post(
-                    url,
-                    cookies=self.login_cookie,
-                    files=files
-                )
+                res = requests.post(url, cookies=self.login_cookie, files=files)
                 if res.status_code == 200:
                     return True
                 else:
@@ -373,7 +363,9 @@ class ACDHTranskribusUtils:
                     print("Error: ", res.status_code, res.content)
                     return False
         else:
-            print(f"a document with title: {doc_title} already exists in collection {col_id}")
+            print(
+                f"a document with title: {doc_title} already exists in collection {col_id}"
+            )
             return False
 
     def upload_mets_files_from_goobi(
