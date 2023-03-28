@@ -238,6 +238,7 @@
          <mets:div ID="PHYS_0010" ORDER="10" ORDERLABEL="[10]" TYPE="page">
             <mets:fptr FILEID="FILE_0010_PRESENTATION"/>
             <mets:fptr FILEID="FILE_0010_DEFAULT"/>
+            <mets:fptr FILEID="hansi4ever"/>
          </mets:div>
       </mets:div>
    </mets:structMap>
