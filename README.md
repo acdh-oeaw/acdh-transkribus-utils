@@ -27,11 +27,32 @@ export TRANSKRIBUS_PASSWORD=verysecret
 you can pass in your credentials also as params e.g. 
 
 ```python
+import os
+
 from transkribus_utils.transkribus_utils import ACDHTranskribusUtils
 
-client = ACDHTranskribusUtils(user="some@mail.com", password="verysecret")
+
+tr_user = os.environ.get("TRANSKRIBUS_USER")
+tr_pw = os.environ.get("TRANSKRIBUS_PASSWORD")
+
+client = ACDHTranskribusUtils(user=tr_user, password=tr_pw)
 ```
 
+### List all collections
+
+```python
+collections = client.list_collections()
+for x in collections[-7:]:
+    print(x["colId"], x["colName"])
+
+# 188933 bv-play
+# 188991 Kasten_blau_45_11
+# 190357 acdh-transkribus-utils
+# 193145 palm
+# 195363 Österreichische Bundesverfassung: Datenset A
+# 196428 Österreichische Bundesverfassung: Datenset B
+# 196429 Österreichische Bundesverfassung: Datenset C
+```
 ### Download METS files from Collection
 
 ```python
