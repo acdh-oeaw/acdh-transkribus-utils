@@ -53,6 +53,22 @@ for x in collections[-7:]:
 # 196428 Österreichische Bundesverfassung: Datenset B
 # 196429 Österreichische Bundesverfassung: Datenset C
 ```
+
+### List all documents from a given collection 
+
+```python
+col_id = 142911
+documents = client.list_docs(col_id)
+n = -3
+for x in documents[n:]:
+    print(x["docId"], x["title"], x["author"], x["nrOfPages"])
+
+# 950920 Kasten_blau_44_9_0050 Pfalz-Neuburg, Eleonore Magdalena Theresia von 1
+# 950921 Kasten_blau_44_9_0037 Pfalz, Johann Wilhelm Joseph Janaz von der 4
+# 950922 Kasten_blau_44_9_0239 Pfalz, Johann Wilhelm Joseph Janaz von der 1
+
+
+```
 ### Download METS files from Collection
 
 ```python
