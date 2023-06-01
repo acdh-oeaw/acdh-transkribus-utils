@@ -6,6 +6,7 @@ from acdh_xml_pyutils.xml import XMLReader
 
 from transkribus_utils import ACDHTranskribusUtils
 from transkribus_utils.mets import get_title_from_mets, replace_img_urls_in_mets
+from transkribus_utils.iiif import get_title_from_iiif
 
 
 file_path = Path(__file__).absolute().parent
@@ -14,7 +15,7 @@ COL_NAME = "acdh-transkribus-utils"
 COL_ID = 190357
 METS_URL = "https://viewer.acdh.oeaw.ac.at/viewer/sourcefile?id=AC16292422"
 DOC_NAME = "Hesketh Crescent"
-SAMPLE_METS = os.path.join(file_path, 'sample_mets2.xml')
+SAMPLE_METS = os.path.join(file_path, "sample_mets2.xml")
 
 
 class TestTestTest(unittest.TestCase):
@@ -54,6 +55,14 @@ class TestTestTest(unittest.TestCase):
 
     def test_007_fix_mets(self):
         new_mets = replace_img_urls_in_mets(SAMPLE_METS)
-        self.assertFalse('/800/0/' in new_mets)
+        self.assertFalse("/800/0/" in new_mets)
         doc = XMLReader(new_mets)
         doc.tree_to_file("kelsen-2.xml")
+
+    def test_008_iiif_title(self):
+        iiif_url = "https://iiif.onb.ac.at/presentation/ANNO/wrz17500103/manifest/"
+        label = get_title_from_iiif(iiif_url)
+        self.assertEqual(label, "Wiener Zeitung 1750-01-03")
+        iiif_url = "https://iiif.onb.ac.at/presentation/ANNO/wrz17500103/manifestasdf/"
+        label = get_title_from_iiif(iiif_url)
+        self.assertEqual(label, iiif_url)

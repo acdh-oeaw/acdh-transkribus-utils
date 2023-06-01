@@ -5,6 +5,7 @@ import lxml.etree as ET
 import re
 
 from .mets import get_title_from_mets, replace_img_urls_in_mets
+from .iiif import get_title_from_iiif
 
 base_url = "https://transkribus.eu/TrpServer/rest"
 nsmap = {"page": "http://schema.primaresearch.org/PAGE/gts/pagecontent/2013-07-15"}
@@ -399,9 +400,8 @@ class ACDHTranskribusUtils:
         :param col_id: Transkribus CollectionID
         """
         # ToDo: check if document with same title already exists
-        # doc_title = get_title_from_mets(iiif_url)
-        doc_title = "dummy"
-        doc_exists = []
+        doc_title = get_title_from_iiif(iiif_url)
+        doc_exists = self.search_for_document(title=doc_title, col_id=col_id)
         if len(doc_exists) == 0:
             res = requests.post(
                 f"{self.base_url}/collections/{col_id}/createDocFromIiifUrl",
