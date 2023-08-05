@@ -70,6 +70,15 @@ class ACDHTranskribusUtils:
         response = requests.get(url, cookies=self.login_cookie)
         return response.json()
 
+    def filter_collections_by_name(self, filter_string):
+        """ lists all collections which names contains 'filter_string' collections
+        :param filter_string: a string the collection name should contain
+        :return: A list with all filtered the collections
+        """
+        cols = self.list_collections()
+        filtered_cols = [x for x in cols if filter_string in x["colName"]]
+        return filtered_cols
+
     def list_docs(self, col_id):
         """Helper function to list all documents in a given collection
         :param col_id: Collection ID

@@ -66,3 +66,8 @@ class TestTestTest(unittest.TestCase):
         iiif_url = "https://iiif.onb.ac.at/presentation/ANNO/wrz17500103/manifestasdf/"
         label = get_title_from_iiif(iiif_url)
         self.assertEqual(label, iiif_url)
+
+    def test_009_filter_cols_by_name(self):
+        client = CLIENT
+        cols = client.filter_collections_by_name("acdh-transkribus-utils")
+        self.assertEqual(len(cols), 1)
