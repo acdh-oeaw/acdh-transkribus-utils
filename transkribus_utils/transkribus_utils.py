@@ -428,6 +428,38 @@ class ACDHTranskribusUtils:
             )
             return False
 
+    def create_status_report(self, filter_string, transcription_threshold=10):
+        """generates a report about the documents in the filterd collections
+        :param filter_string: a string the collection name should contain
+        :param transcription_threshold: minimum number of transcribed lines
+        to qualify a document as transcribed
+
+        :return: a list dicts
+        """
+        cols = self.filter_collections_by_name(filter_string)
+        docs = []
+        for x in cols:
+            col_id = x["colId"]
+            for y in self.list_docs(col_id):
+                transcribed = False
+                doc_id = y["docId"]
+                doc_overview = self.get_doc_overview_md(doc_id, col_id)
+                doc_md = doc_overview['trp_return']['md']
+                transcribed_lines = doc_md["nrOfTranscribedLines"]
+                if transcribed_lines > transcription_threshold:
+                    transcribed = True
+                doc_stats = {
+                    "doc_id": doc_id,
+                    "col_id": col_id,
+                    "doc_title": doc_md["title"],
+                    "doc_transcribed": transcribed,
+                    "pages": doc_md["nrOfPages"],
+                    "doc_thumb": doc_md["thumbUrl"],
+                    "doc_md": doc_md
+                }
+                docs.append(doc_stats)
+        return docs
+
     def __init__(
         self,
         user=None,
