@@ -443,6 +443,22 @@ class ACDHTranskribusUtils:
         user_id = response["trpUser"][0]["userId"]
         return user_id
 
+    def add_user_to_collection(self, user_name: str, col_id: int, role: str = "Owner", send_mail: bool = True) -> str:
+        """adds user to given collection"""
+        user_id = self.get_user_id(user_name)
+        result_msg = f"looks like something went wront adding {user_name} to collection {col_id}"
+        params = {"userid": user_id, "role": role}
+        if not send_mail:
+            params = {"userid": user_id, "role": role, "sendMail": False}
+        res = requests.post(
+            f"{self.base_url}/collections/{col_id}/addOrModifyUserInCollection",
+            cookies=self.login_cookie,
+            params=params,
+        )
+        if res.status_code == 200:
+            result_msg = f"added user {user_name} to collection {col_id}"
+        return result_msg
+
     def create_status_report(
         self, filter_string: str, transcription_threshold: int = 10
     ) -> list:

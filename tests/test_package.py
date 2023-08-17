@@ -83,3 +83,10 @@ class TestTestTest(unittest.TestCase):
         client = CLIENT
         user_id = client.get_user_id(client.user)
         self.assertTrue(user_id)
+
+    def test_012_add_user(self):
+        client = CLIENT
+        col_id = 190357
+        status = client.add_user_to_collection(client.user, col_id=col_id, send_mail=False)
+        self.assertTrue(f"{190357}" in status)
+        self.assertTrue(f"{client.user}" in status)
