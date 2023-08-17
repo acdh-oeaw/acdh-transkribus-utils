@@ -428,7 +428,24 @@ class ACDHTranskribusUtils:
             )
             return False
 
-    def create_status_report(self, filter_string: str, transcription_threshold: int = 10) -> list:
+    def get_user_id(self, user_name: str) -> int:
+        """returns the ID of the passed in user name
+        :param user_name: the user name
+
+        :return: the user's ID
+        """
+        r = requests.get(
+            f"{self.base_url}/user/list",
+            cookies=self.login_cookie,
+            params={"user": user_name},
+        )
+        response = r.json()
+        user_id = response["trpUser"][0]["userId"]
+        return user_id
+
+    def create_status_report(
+        self, filter_string: str, transcription_threshold: int = 10
+    ) -> list:
         """generates a report about the documents in the filterd collections
         :param filter_string: a string the collection name should contain
         :param transcription_threshold: minimum number of transcribed lines
@@ -472,10 +489,13 @@ class ACDHTranskribusUtils:
     ) -> None:
         if user is None:
             user = os.environ.get("TRANSKRIBUS_USER", None)
+            self.user = user
             if user is None:
                 raise AttributeError(
                     "Transkribus username needs to be set in environments or in init"
                 )
+        else:
+            self.user = user
         if password is None:
             password = os.environ.get("TRANSKRIBUS_PASSWORD", None)
             if password is None:
