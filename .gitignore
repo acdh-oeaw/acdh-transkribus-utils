@@ -26,3 +26,4 @@ secret.sh
 env.secret
 .coverage
 !/tests/sample*xml
+play.py

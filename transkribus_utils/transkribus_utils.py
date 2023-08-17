@@ -71,7 +71,7 @@ class ACDHTranskribusUtils:
         return response.json()
 
     def filter_collections_by_name(self, filter_string):
-        """ lists all collections which names contains 'filter_string' collections
+        """lists all collections which names contains 'filter_string' collections
         :param filter_string: a string the collection name should contain
         :return: A list with all filtered the collections
         """
@@ -428,7 +428,7 @@ class ACDHTranskribusUtils:
             )
             return False
 
-    def create_status_report(self, filter_string, transcription_threshold=10):
+    def create_status_report(self, filter_string: str, transcription_threshold: int = 10) -> list:
         """generates a report about the documents in the filterd collections
         :param filter_string: a string the collection name should contain
         :param transcription_threshold: minimum number of transcribed lines
@@ -437,14 +437,17 @@ class ACDHTranskribusUtils:
         :return: a list dicts
         """
         cols = self.filter_collections_by_name(filter_string)
+        print(f"found {len(cols)} matching {filter_string}")
         docs = []
         for x in cols:
             col_id = x["colId"]
-            for y in self.list_docs(col_id):
+            doc_list = self.list_docs(col_id)
+            print(f"processing {len(doc_list)} documents from collection {col_id}")
+            for y in doc_list:
                 transcribed = False
                 doc_id = y["docId"]
                 doc_overview = self.get_doc_overview_md(doc_id, col_id)
-                doc_md = doc_overview['trp_return']['md']
+                doc_md = doc_overview["trp_return"]["md"]
                 transcribed_lines = doc_md["nrOfTranscribedLines"]
                 if transcribed_lines > transcription_threshold:
                     transcribed = True
@@ -455,7 +458,7 @@ class ACDHTranskribusUtils:
                     "doc_transcribed": transcribed,
                     "pages": doc_md["nrOfPages"],
                     "doc_thumb": doc_md["thumbUrl"],
-                    "doc_md": doc_md
+                    "doc_md": doc_md,
                 }
                 docs.append(doc_stats)
         return docs
