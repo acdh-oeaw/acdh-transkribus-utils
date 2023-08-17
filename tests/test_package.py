@@ -71,3 +71,10 @@ class TestTestTest(unittest.TestCase):
         client = CLIENT
         cols = client.filter_collections_by_name("acdh-transkribus-utils")
         self.assertEqual(len(cols), 1)
+
+    def test_010_create_report(self):
+        client = CLIENT
+        status = client.create_status_report(
+            filter_string="acdh-transkribus-utils", transcription_threshold=1
+        )
+        self.assertEqual(len(status), 5)
