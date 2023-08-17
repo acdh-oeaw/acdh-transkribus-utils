@@ -78,3 +78,8 @@ class TestTestTest(unittest.TestCase):
             filter_string="acdh-transkribus-utils", transcription_threshold=1
         )
         self.assertEqual(len(status), 5)
+
+    def test_011_user_id(self):
+        client = CLIENT
+        user_id = client.get_user_id(client.user)
+        self.assertTrue(user_id)
