@@ -443,10 +443,14 @@ class ACDHTranskribusUtils:
         user_id = response["trpUser"][0]["userId"]
         return user_id
 
-    def add_user_to_collection(self, user_name: str, col_id: int, role: str = "Owner", send_mail: bool = True) -> str:
+    def add_user_to_collection(
+        self, user_name: str, col_id: int, role: str = "Owner", send_mail: bool = True
+    ) -> str:
         """adds user to given collection"""
         user_id = self.get_user_id(user_name)
-        result_msg = f"looks like something went wront adding {user_name} to collection {col_id}"
+        result_msg = (
+            f"looks like something went wront adding {user_name} to collection {col_id}"
+        )
         params = {"userid": user_id, "role": role}
         if not send_mail:
             params = {"userid": user_id, "role": role, "sendMail": False}
@@ -495,6 +499,34 @@ class ACDHTranskribusUtils:
                 }
                 docs.append(doc_stats)
         return docs
+
+    def run_htr(
+        self,
+        col_id: int | str,
+        doc_id: int | str,
+        start_page: int = 1,
+        end_page: None | int = None,
+        model_id: int = 51170,
+    ):
+        """starts htr with the given params and returns the job ID"""
+        job_id = None
+
+        if end_page:
+            pages = f"{start_page}-{end_page}"
+        else:
+            pages = f"{start_page}"
+        params = {"id": doc_id, "pages": pages}
+        res = requests.post(
+            f"{self.base_url}/recognition/{col_id}/{model_id}/trhtr",
+            cookies=self.login_cookie,
+            params=params,
+        )
+        if res.status_code == 200:
+            job_id = res.text
+            print(f"started HTR for DOC-ID: {doc_id} with JOB-ID {job_id}")
+            return job_id
+        else:
+            print("something went wrong")
 
     def __init__(
         self,
