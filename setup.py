@@ -26,15 +26,4 @@ setup(
     license="MIT",
     zip_safe=False,
     keywords="acdh-transkribus-utils",
-    classifiers=[
-        "Development Status :: 3 - Alpha",
-        "Framework :: Django :: 2.0",
-        "Intended Audience :: Developers",
-        "License :: OSI Approved :: BSD License",
-        "Natural Language :: English",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
-        "Programming Language :: Python :: 3.6",
-    ],
 )
