@@ -152,7 +152,7 @@ class ACDHTranskribusUtils:
             result["img_url"] = doc_xml.xpath("./url/text()")[0]
             result["img_url"] = doc_xml.xpath("./url/text()")[0]
             result["extra_info"] = self.get_doc_md(
-                doc_id, base_url=self.base_url, col_id=col_id
+                doc_id, col_id=col_id
             )
             return result
         else:
@@ -282,7 +282,12 @@ class ACDHTranskribusUtils:
         print(f"{len(doc_ids)} to download")
         counter = 1
         for doc_id in doc_ids:
-            save_mets = self.save_mets_to_file(doc_id, col_id, file_path=col_dir)
+            try:
+                save_mets = self.save_mets_to_file(doc_id, col_id, file_path=col_dir)
+            except Exception as e:
+                print(f"failed to save mets for DOC-ID: {doc_id} in COLLECTION: {col_id} due to ERROR: {e}")
+                counter += 1
+                continue
             file_list = self.save_image_names_to_file(doc_id, col_id, file_path=col_dir)
             print(f"saving: {save_mets}")
             print(f"saving: {file_list}")
