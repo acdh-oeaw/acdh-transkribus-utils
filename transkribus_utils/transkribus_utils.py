@@ -152,7 +152,7 @@ class ACDHTranskribusUtils:
             result["img_url"] = doc_xml.xpath("./url/text()")[0]
             result["img_url"] = doc_xml.xpath("./url/text()")[0]
             result["extra_info"] = self.get_doc_md(
-                doc_id, base_url=self.base_url, col_id=col_id
+                doc_id, col_id=col_id
             )
             return result
         else:

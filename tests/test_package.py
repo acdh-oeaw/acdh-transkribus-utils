@@ -1,6 +1,8 @@
 import os
+import shutil
 import unittest
 from pathlib import Path
+import pytest
 
 from acdh_xml_pyutils.xml import XMLReader
 
@@ -86,7 +88,51 @@ class TestTestTest(unittest.TestCase):
 
     def test_012_add_user(self):
         client = CLIENT
-        col_id = 190357
-        status = client.add_user_to_collection(client.user, col_id=col_id, send_mail=False)
+        status = client.add_user_to_collection(
+            client.user, col_id=COL_ID, send_mail=False
+        )
         self.assertTrue(f"{190357}" in status)
         self.assertTrue(f"{client.user}" in status)
+
+    def test_013_wrong_credentials(self):
+        with pytest.raises(Exception):
+            ACDHTranskribusUtils(user="whatever@gmail.com", password="this-wont work")
+
+    def test_014_doc_md(self):
+        client = CLIENT
+        doc_id = 1351422
+        doc_md = client.get_doc_md(doc_id, COL_ID)
+        self.assertTrue(doc_md["docId"], doc_id)
+
+    def test_014_get_fulldoc_md(self):
+        client = CLIENT
+        doc_id = 1351422
+        doc_md = client.get_fulldoc_md(doc_id, COL_ID)
+        self.assertTrue(doc_md["extra_info"]["nrOfPages"], 10)
+
+    def test_015_save_mets_to_file(self):
+        client = CLIENT
+        doc_id = 1351422
+        f_name = f"{doc_id}_mets.xml"
+        try:
+            os.remove(f_name)
+        except OSError:
+            pass
+        client.save_mets_to_file(doc_id, COL_ID)
+        my_file = Path(f_name)
+        self.assertTrue(my_file.is_file())
+        os.remove(f_name)
+
+    def test_016_list_documents(self):
+        client = CLIENT
+        result = client.list_documents(COL_ID)
+        self.assertTrue(len(result), 5)
+
+    def test_017_dl_collection(self):
+        shutil.rmtree(f"{COL_ID}", ignore_errors=True)
+        result = CLIENT.collection_to_mets(COL_ID)
+        doc_id = 1351422
+        self.assertTrue(doc_id in result)
+        my_file = Path(os.path.join(f"{COL_ID}", f"{doc_id}_mets.xml"))
+        self.assertTrue(my_file.is_file())
+        shutil.rmtree(f"{COL_ID}", ignore_errors=True)
