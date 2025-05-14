@@ -238,6 +238,20 @@ class ACDHTranskribusUtils:
             result = []
         return result
 
+    def get_pages_metadata(self, doc_id, col_id):
+        """ Gets metadata of the pages of a given Document
+        :param col_id: The ID of a TRANSKRIBUS Collection
+        :param doc_id: The ID of TRANSKRIBUS Document
+        :return: a list of dictionaries
+        """
+        url = f"{self.base_url}/collections/{col_id}/{doc_id}/fulldoc"
+        response = requests.get(url, cookies=self.login_cookie)
+        if response.ok:
+            result = response.json()["pageList"]["pages"]
+        else:
+            result = []
+        return result
+
     def save_image_names_to_file(self, doc_id, col_id, file_path="."):
         """Saves the METS file of a Document
         :param col_id: The ID of a TRANSKRIBUS Collection
